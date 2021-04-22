@@ -1,0 +1,8 @@
+# Default ignored files
+/shelf/
+/workspace.xml
+
+# pycharm directories: 
+__pycache__/
+venv/
+.idea/
