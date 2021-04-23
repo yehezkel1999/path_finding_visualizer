@@ -26,6 +26,13 @@ class PathFindingAlgorithm:
             self._exclude_start_end(current, Node.path)
             self._grid.draw()
 
+    def _pre_run(self) -> None:
+        """
+        method to call before an algorithm run
+        :return: no return value
+        """
+        self._grid.update_nodes()  # update nodes depending on barrier locations
+
     @abstractmethod
     def run(self):
         pass

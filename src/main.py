@@ -23,6 +23,7 @@ def main():
 def loop(grid: Grid):
     start = None
     end = None
+    algorithm = None
 
     while True:
         for event in pygame.event.get():
@@ -52,12 +53,14 @@ def loop(grid: Grid):
             elif event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_SPACE and start and end:
                     algorithm = AStar(grid, start, end)
-                    algorithm.run()
 
                 if event.key == pygame.K_c:
                     start = None
                     end = None
                     grid.reset()
+        if algorithm:
+            algorithm.run()
+            algorithm = None
         grid.draw()
 
 

@@ -5,11 +5,17 @@ import colors
 
 
 class Grid:
-    """
-    creates a grid with a [height, width] of a window with th given amount of rows, the
-    columns will be deduced by [width / (height / rows)].
-    """
+    reference_size = 50
+
     def __init__(self, window, height, width, rows):
+        """
+        creates a grid with a [height, width] of a window with the given amount of rows, the
+        columns will be deduced by [width / (height / rows)].
+        :param window: the pygame window
+        :param height: the height of the window
+        :param width: the width of the window
+        :param rows: amount of rows the grid will have
+        """
         # pygame window
         self._window = window
         # dimensions of the pygame window
@@ -17,13 +23,27 @@ class Grid:
         self._width = width
 
         self._grid = []
-        self._cube_length = height // rows
 
+        self._cube_length = height // rows
         cols = width // self._cube_length
+
+        # normal:
         for i in range(rows):
             self._grid.append([])
             for j in range(cols):
                 self._grid[i].append(Node(window, i, j, self._cube_length))
+        '''
+        self._grid_start = 
+        reference_rows = Grid.reference_size // self._cube_length  # rows to exclude from the top for the references
+
+        for i in range(rows):
+            if i > reference_rows - 1:
+                self._grid.append([])
+            grid_i = i - reference_rows
+            if grid_i > 0:
+                for j in range(cols):
+                    self._grid[grid_i].append(Node(window, grid_i, j, self._cube_length))
+        '''
 
     @property
     def rows(self):
@@ -33,10 +53,12 @@ class Grid:
     def columns(self):
         return len(self._grid[0])
 
-    """
-    returns a list that holds the row number of the given index
-    """
     def __getitem__(self, index) -> list:
+        """
+        operator[]
+        :param index: index of the row (from 0 ro [rows])
+        :return: a list that holds the row number of the given index
+        """
         return self._grid[index]
 
     def __draw_lines(self):

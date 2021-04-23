@@ -48,8 +48,7 @@ class AStar(PathFindingAlgorithm):
         return abs(x1 - x2) + abs(y1 - y2)
 
     def run(self):
-        self._grid.update_nodes()  # update nodes depending on barrier locations
-
+        super()._pre_run()
         while not self.open_set.empty():
             for event in pygame.event.get():  # so the user can quit mid algorithm
                 if event.type == pygame.QUIT:
