@@ -5,8 +5,6 @@ import colors
 
 
 class Grid:
-    reference_size = 50
-
     def __init__(self, window, height, width, rows):
         """
         creates a grid with a [height, width] of a window with the given amount of rows, the
@@ -32,18 +30,6 @@ class Grid:
             self._grid.append([])
             for j in range(cols):
                 self._grid[i].append(Node(window, i, j, self._cube_length))
-        '''
-        self._grid_start = 
-        reference_rows = Grid.reference_size // self._cube_length  # rows to exclude from the top for the references
-
-        for i in range(rows):
-            if i > reference_rows - 1:
-                self._grid.append([])
-            grid_i = i - reference_rows
-            if grid_i > 0:
-                for j in range(cols):
-                    self._grid[grid_i].append(Node(window, grid_i, j, self._cube_length))
-        '''
 
     @property
     def rows(self):

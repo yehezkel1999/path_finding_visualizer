@@ -1,12 +1,12 @@
 
-from abc import abstractmethod
+from abc import ABC, abstractmethod
 from typing import Tuple
 
 from Grid import Grid
 from Node import Node
 
 
-class PathFindingAlgorithm:
+class PathFindingAlgorithm(ABC):
     def __init__(self, grid: Grid, start: Node, end: Node):
         self._grid = grid
         self._start = start

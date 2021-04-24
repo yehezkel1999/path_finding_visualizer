@@ -7,6 +7,8 @@ from PathFindingAlgorithm import PathFindingAlgorithm
 
 
 class AStar(PathFindingAlgorithm):
+    run_key = pygame.K_a
+
     def __init__(self, grid: Grid, start: Node, end: Node):
         super().__init__(grid, start, end)
 
@@ -75,8 +77,8 @@ class AStar(PathFindingAlgorithm):
                         self.open_set_hash.add(neighbor)
                         neighbor.color = Node.open
 
-            self._grid.draw()
-
             self._exclude_start_end(current, Node.closed)  # considered the node and for now it's closed
+
+            self._grid.draw()
 
         return False  # path not found
