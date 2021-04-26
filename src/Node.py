@@ -1,4 +1,4 @@
-from typing import Tuple, List
+from typing import Tuple
 
 import pygame
 import colors
@@ -66,14 +66,17 @@ class Node:
 
     def update_neighbors(self, grid):
         self._neighbors.clear()
-        if self._row < grid.rows - 1 and grid[self._row + 1][self._col].color != Node.barrier:  # down
-            self._neighbors.append(grid[self._row + 1][self._col])
-        if self._row > 0 and grid[self._row - 1][self._col].color != Node.barrier:  # up
+        if self._row > 0 and grid[self._row - 1][self._col].color != Node.barrier:  # left
             self._neighbors.append(grid[self._row - 1][self._col])
-        if self._col < grid.columns - 1 and grid[self._row][self._col + 1].color != Node.barrier:  # right
+        if self._col < grid.columns - 1 and grid[self._row][self._col + 1].color != Node.barrier:  # down
             self._neighbors.append(grid[self._row][self._col + 1])
-        if self._col > 0 and grid[self._row][self._col - 1].color != Node.barrier:  # left
+        if self._col > 0 and grid[self._row][self._col - 1].color != Node.barrier:  # up
             self._neighbors.append(grid[self._row][self._col - 1])
+        if self._row < grid.rows - 1 and grid[self._row + 1][self._col].color != Node.barrier:  # right
+            self._neighbors.append(grid[self._row + 1][self._col])
 
     def __lt__(self, other):
         return False
+
+    def __str__(self):
+        return "Node: position: " + str(self.position)

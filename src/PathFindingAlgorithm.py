@@ -1,12 +1,14 @@
 
-from abc import abstractmethod
+from abc import ABC, abstractmethod
 from typing import Tuple
-
 from Grid import Grid
 from Node import Node
+import pygame
 
 
-class PathFindingAlgorithm:
+class PathFindingAlgorithm(ABC):
+    return_key = pygame.K_ESCAPE
+
     def __init__(self, grid: Grid, start: Node, end: Node):
         self._grid = grid
         self._start = start
