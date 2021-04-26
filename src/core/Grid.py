@@ -1,7 +1,7 @@
 import pygame
 
-from Node import Node
-import colors
+from src.core import colors
+from src.core.Node import Node
 
 
 class Grid:

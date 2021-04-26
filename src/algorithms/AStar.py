@@ -1,9 +1,9 @@
 
 import pygame
 from queue import PriorityQueue
-from Grid import Grid
-from Node import Node
-from PathFindingAlgorithm import PathFindingAlgorithm
+from ..core.Grid import Grid
+from ..core.Node import Node
+from ..core.PathFindingAlgorithm import PathFindingAlgorithm
 
 
 class AStar(PathFindingAlgorithm):

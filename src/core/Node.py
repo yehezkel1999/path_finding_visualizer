@@ -1,7 +1,7 @@
-from typing import Tuple
 
+from typing import Tuple
 import pygame
-import colors
+from src.core import colors
 
 
 class Node:

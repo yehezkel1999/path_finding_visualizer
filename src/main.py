@@ -1,9 +1,10 @@
+
 import pygame
-from Grid import Grid
-from Node import Node
-from AStar import AStar
-from DFS import DFS
-from BFS import BFS
+from src.core.Grid import Grid
+from src.core.Node import Node
+from src.algorithms.AStar import AStar
+from src.algorithms.DFS import DFS
+from src.algorithms.BFS import BFS
 
 MOUSE_BUTTONS = 3  # find a way to figure this out
 
