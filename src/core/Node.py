@@ -59,7 +59,11 @@ class Node:
         return self._neighbors
 
     def reset(self):
-        self._color = Node.blank
+        if self.color != Node.barrier and self.color != Node.start and self.color != Node.end:
+            self.color = Node.blank
+
+    def clear(self):
+        self.color = Node.blank
 
     def draw(self):
         pygame.draw.rect(self._window, self._color, (self.window_x, self.window_y, self._length, self._length))

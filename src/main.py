@@ -51,7 +51,7 @@ def loop(grid: Grid):
                 elif node is end:
                     end = None
 
-                node.reset()
+                node.clear()
 
             elif event.type == pygame.KEYDOWN:
                 if event.key == AStar.run_key and start and end:
@@ -64,9 +64,11 @@ def loop(grid: Grid):
                 if event.key == pygame.K_c:
                     start = None
                     end = None
-                    grid.reset()
+                    grid.clear()
         if algorithm:
-            algorithm.run()
+            return_value = algorithm.run()
+            if return_value is None:
+                break
             algorithm = None
         grid.draw()
 

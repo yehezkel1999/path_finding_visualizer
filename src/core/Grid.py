@@ -67,14 +67,14 @@ class Grid:
         pygame.display.update()
 
     def reset(self):
-        self._window.fill(colors.WHITE)
-        self.__draw_lines()
-
         for i in range(self.rows):
             for j in range(self.columns):
                 self._grid[i][j].reset()
 
-        pygame.display.update()
+    def clear(self):
+        for i in range(self.rows):
+            for j in range(self.columns):
+                self._grid[i][j].clear()
 
     def clicked_position(self, pos):
         x, y = pos

@@ -22,6 +22,7 @@ class BFS(PathFindingAlgorithm):
             for event in pygame.event.get():  # so the user can quit mid algorithm
                 if event.type == pygame.QUIT:
                     pygame.quit()
+                    return None
                 if event.type == pygame.KEYDOWN and event.key == PathFindingAlgorithm.return_key:
                     return False
 
