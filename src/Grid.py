@@ -5,14 +5,14 @@ import colors
 
 
 class Grid:
-    def __init__(self, window, height, width, rows):
+    def __init__(self, window, height, width, cube_length):
         """
-        creates a grid with a [height, width] of a window with the given amount of rows, the
-        columns will be deduced by [width / (height / rows)].
+        creates a grid with a [height, width] of a window with the given cube length of each cube in the grid,
+        the amount of rows and columns will be deduced
         :param window: the pygame window
         :param height: the height of the window
         :param width: the width of the window
-        :param rows: amount of rows the grid will have
+        :param cube_length: the length of the side of each cube in the grid
         """
         # pygame window
         self._window = window
@@ -22,8 +22,9 @@ class Grid:
 
         self._grid = []
 
-        self._cube_length = height // rows
-        cols = width // self._cube_length
+        self._cube_length = cube_length
+        rows = height // cube_length
+        cols = width // cube_length
 
         # normal:
         for i in range(rows):
@@ -48,12 +49,12 @@ class Grid:
         return self._grid[index]
 
     def __draw_lines(self):
-        for i in range(self.rows):
-            pygame.draw.line(self._window, colors.GREY,
-                             (0, i * self._cube_length), (self._width, i * self._cube_length))
         for i in range(self.columns):
             pygame.draw.line(self._window, colors.GREY,
-                             (i * self._cube_length, 0), (i * self._cube_length, self._height))
+                             (0, i * self._cube_length), (self._height, i * self._cube_length))
+        for i in range(self.rows):
+            pygame.draw.line(self._window, colors.GREY,
+                             (i * self._cube_length, 0), (i * self._cube_length, self._width))
 
     def draw(self):
         self._window.fill(colors.WHITE)

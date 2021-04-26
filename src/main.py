@@ -2,20 +2,21 @@ import pygame
 from Grid import Grid
 from Node import Node
 from AStar import AStar
-from src.BFS import BFS
+from DFS import DFS
+from BFS import BFS
 
 MOUSE_BUTTONS = 3  # find a way to figure this out
-HEIGHT = 600
-WIDTH = 800
 
-ROWS = 50
+CUBE_LENGTH = 12
+HEIGHT = 480
+WIDTH = int(HEIGHT * 1.2)
 
 
 def main():
-    window = pygame.display.set_mode((HEIGHT, HEIGHT))  # set up pygame window
+    window = pygame.display.set_mode((HEIGHT, WIDTH))  # set up pygame window
     pygame.display.set_caption("Path Finding Visualizer")
 
-    grid = Grid(window, HEIGHT, WIDTH, ROWS)
+    grid = Grid(window, HEIGHT, WIDTH, CUBE_LENGTH)
     loop(grid)
 
     pygame.quit()
@@ -56,6 +57,8 @@ def loop(grid: Grid):
                     algorithm = AStar(grid, start, end)
                 if event.key == BFS.run_key and start and end:
                     algorithm = BFS(grid, start, end)
+                if event.key == DFS.run_key and start and end:
+                    algorithm = DFS(grid, start, end)
 
                 if event.key == pygame.K_c:
                     start = None

@@ -55,6 +55,8 @@ class AStar(PathFindingAlgorithm):
             for event in pygame.event.get():  # so the user can quit mid algorithm
                 if event.type == pygame.QUIT:
                     pygame.quit()
+                if event.type == pygame.KEYDOWN and event.key == PathFindingAlgorithm.return_key:
+                    return False
 
             current: Node = self.open_set.get()[2]  # the current node that is being checked
             self.open_set_hash.remove(current)
@@ -75,7 +77,7 @@ class AStar(PathFindingAlgorithm):
                         self.count += 1
                         self.open_set.put((self.f_score[neighbor], self.count, neighbor))
                         self.open_set_hash.add(neighbor)
-                        neighbor.color = Node.open
+                        self._exclude_start_end(neighbor, Node.open)
 
             self._exclude_start_end(current, Node.closed)  # considered the node and for now it's closed
 
