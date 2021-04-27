@@ -1,8 +1,8 @@
 
 from abc import ABC, abstractmethod
 from typing import Tuple
-from Grid import Grid
-from Node import Node
+from src.core.Grid import Grid
+from src.core.Node import Node
 import pygame
 
 
@@ -33,6 +33,7 @@ class PathFindingAlgorithm(ABC):
         method to call before an algorithm run
         :return: no return value
         """
+        self._grid.reset()
         self._grid.update_nodes()  # update nodes depending on barrier locations
 
     @abstractmethod
